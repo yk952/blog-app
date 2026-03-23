@@ -1,0 +1,55 @@
+<view class="publish-container">
+  <!-- 标题输入 -->
+  <view class="input-item title-input">
+    <input 
+      placeholder="请输入文章标题（最多30字）" 
+      bindinput="inputTitle"
+      value="{{title}}"
+      maxlength="30"
+    ></input>
+  </view>
+
+  <!-- 分类选择 -->
+  <view class="category-wrap" bindtap="showCategoryPicker">
+    <text class="label">文章分类：</text>
+    <text class="category-text">{{selectedCategory.name || '请选择分类'}}</text>
+    <text class="arrow">▶</text>
+  </view>
+
+  <!-- 富文本编辑器 -->
+  <view class="editor-wrap">
+    <mp-html 
+      type="editor" 
+      placeholder="请输入文章内容..."
+      bindinput="contentChange"
+      content="{{content}}"
+    ></mp-html>
+  </view>
+
+  <!-- 图片上传 -->
+  <view class="upload-wrap">
+    <text class="upload-title">上传图片（最多9张）</text>
+    <view class="upload-list">
+      <!-- 已上传图片 -->
+      <block wx:for="{{images}}" wx:key="index">
+        <view class="upload-item">
+          <image src="{{item}}" mode="aspectFill"></image>
+          <button class="del-btn" bindtap="deleteImage" data-index="{{index}}">×</button>
+        </view>
+      </block>
+      <!-- 上传按钮 -->
+      <view class="upload-btn" bindtap="chooseImage" wx:if="{{images.length < 9}}">
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发布按钮 -->
+  <button 
+    class="publish-btn" 
+    bindtap="publishArticle"
+    disabled="{{!title || !content || !selectedCategory.id}}"
+  >
+    发布文章
+  </button>
+</view>

@@ -1,0 +1,60 @@
+<view class="login-container">
+  <!-- 登录头部 -->
+  <view class="login-header">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="title">我的博客</text>
+    <text class="sub-title">登录后发布你的精彩内容</text>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <!-- 手机号输入 -->
+    <view class="input-item">
+      <text class="icon">📱</text>
+      <input 
+        class="input" 
+        placeholder="请输入手机号" 
+        type="number" 
+        bindinput="inputPhone"
+        value="{{phone}}"
+      ></input>
+    </view>
+
+    <!-- 验证码输入 + 获取验证码 -->
+    <view class="input-item code-item">
+      <text class="icon">🔑</text>
+      <input 
+        class="input code-input" 
+        placeholder="请输入验证码" 
+        type="number" 
+        bindinput="inputCode"
+        value="{{code}}"
+      ></input>
+      <button 
+        class="code-btn" 
+        bindtap="getCode" 
+        disabled="{{codeDisabled}}"
+      >
+        {{codeText}}
+      </button>
+    </view>
+
+    <!-- 登录按钮 -->
+    <button 
+      class="login-btn" 
+      bindtap="login"
+      disabled="{{!phone || !code}}"
+    >
+      登录
+    </button>
+
+    <!-- 微信快捷登录 -->
+    <view class="other-login">
+      <text>其他登录方式</text>
+      <button class="wx-login-btn" open-type="getPhoneNumber" bindgetphonenumber="wxLogin">
+        <text class="wx-icon">🐧</text>
+        微信快捷登录
+      </button>
+    </view>
+  </view>
+</view>

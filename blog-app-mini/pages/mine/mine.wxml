@@ -1,0 +1,45 @@
+<view class="mine-container">
+  <!-- 个人信息头部 -->
+  <view class="user-info-wrap" wx:if="{{isLogin}}">
+    <image class="avatar" src="{{userInfo.avatar || '/images/avatar.png'}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="username">{{userInfo.username}}</text>
+      <text class="phone">{{userInfo.phone}}</text>
+    </view>
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+  <view class="login-wrap" wx:else bindtap="goLogin">
+    <text>点击登录</text>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="func-list">
+    <!-- 我的发布 -->
+    <view class="func-item" bindtap="goMyArticle" wx:if="{{isLogin}}">
+      <text class="icon">📝</text>
+      <text class="text">我的发布</text>
+      <text class="arrow">▶</text>
+    </view>
+
+    <!-- 我的收藏 -->
+    <view class="func-item" bindtap="goMyCollection" wx:if="{{isLogin}}">
+      <text class="icon">⭐</text>
+      <text class="text">我的收藏</text>
+      <text class="arrow">▶</text>
+    </view>
+
+    <!-- 意见反馈 -->
+    <view class="func-item" bindtap="goFeedback">
+      <text class="icon">💡</text>
+      <text class="text">意见反馈</text>
+      <text class="arrow">▶</text>
+    </view>
+
+    <!-- 关于我们 -->
+    <view class="func-item" bindtap="goAbout">
+      <text class="icon">ℹ️</text>
+      <text class="text">关于我们</text>
+      <text class="arrow">▶</text>
+    </view>
+  </view>
+</view>

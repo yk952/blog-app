@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/auth/login",
+    "pages/publish/publish",
+    "pages/category/category",
+    "pages/detail/detail",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "我的博客",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "onReachBottomDistance": 50
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#0088ff",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "images/category.png",
+        "selectedIconPath": "images/category_active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "images/publish.png",
+        "selectedIconPath": "images/publish_active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_active.png"
+      }
+    ]
+  },
+  "permission": { 
+    "scope.userInfo": {
+      "desc": "用于登录和展示个人信息"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+
+  "usingComponents": {
+    "mp-html": "/components/mp-html/mp-html"
+  }
+}

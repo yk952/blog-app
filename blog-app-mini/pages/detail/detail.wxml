@@ -1,0 +1,63 @@
+<!--pages/detail/detail.wxml-->
+<navigation-bar title="博客详情" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y>
+  <view class="detail-wrap">
+    <view class="detail-title">{{blogInfo.title}}</view>
+    <view class="detail-meta">
+      <text>{{blogInfo.author}}</text>
+      <text>{{blogInfo.createTime}}</text>
+      <text>阅读 {{blogInfo.readCount}}</text>
+    </view>
+    <view class="detail-content" wx:if="{{blogInfo.content}}">
+      <rich-text nodes="{{blogInfo.content}}"></rich-text>
+    </view>
+  </view>
+  <!-- 评论区 -->
+<view class="comment-wrap">
+  <view class="comment-header">
+    <text class="comment-title">评论区 ({{commentCount}})</text>
+    <text class="refresh-btn" bindtap="refreshComment">刷新</text>
+  </view>
+
+  <!-- 评论输入 -->
+  <view class="comment-input-wrap" wx:if="{{isLogin}}">
+    <input 
+      class="comment-input" 
+      placeholder="说点什么..." 
+      bindinput="inputComment"
+      value="{{commentContent}}"
+    ></input>
+    <button 
+      class="send-btn" 
+      bindtap="sendComment"
+      disabled="{{!commentContent.trim()}}"
+    >
+      发送
+    </button>
+  </view>
+  <view class="login-tip" wx:else bindtap="goLogin">
+    登录后可发表评论 →
+  </view>
+
+  <!-- 评论列表 -->
+  <view class="comment-list">
+    <block wx:for="{{commentList}}" wx:key="id">
+      <view class="comment-item">
+        <image class="avatar" src="{{item.user.avatar || '/images/avatar.png'}}" mode="aspectFill"></image>
+        <view class="comment-content">
+          <view class="user-info">
+            <text class="username">{{item.user.username}}</text>
+            <text class="time">{{item.createTime}}</text>
+          </view>
+          <text class="content">{{item.content}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空评论提示 -->
+  <view class="empty-comment" wx:if="{{commentList.length === 0 && !loadingComment}}">
+    暂无评论，快来抢沙发吧～
+  </view>
+</view>
+</scroll-view>

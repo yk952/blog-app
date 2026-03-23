@@ -1,0 +1,77 @@
+# ==================== Windows 系统核心文件 ====================
+# Windows 自动生成的临时文件
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+~*
+
+# Windows 回收站和系统日志
+$RECYCLE.BIN/
+*.log
+*.log.*
+System Volume Information/
+
+# Windows 快捷方式（避免提交无用的.lnk文件）
+*.lnk
+
+# Windows 隐藏的系统文件
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$WINRE_BACKUP_PARTITION.MARKER
+
+# Windows 搜索索引文件
+*.esd
+*.installer
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows 休眠/内存转储文件
+hiberfil.sys
+pagefile.sys
+swapfile.sys
+MEMORY.DMP
+
+# ==================== 通用开发工具（Windows 版） ====================
+# Visual Studio/VS Code 缓存（Windows 环境高频使用）
+.vs/
+.vscode/
+!/.vscode/extensions.json
+!/.vscode/settings.json
+!/.vscode/tasks.json
+!/.vscode/launch.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+*.vcxproj.filters
+ipch/
+x64/
+x86/
+Debug/
+Release/
+Build/
+bin/
+obj/
+
+# JetBrains 系列 IDE（如 IntelliJ IDEA/CLion，Windows 版）
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# 其他 Windows 常用工具残留
+# Notepad++ 配置
+*.npp
+# WinRAR 临时文件
+*.rar$
+*.zip$

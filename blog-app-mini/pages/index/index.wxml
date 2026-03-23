@@ -1,0 +1,33 @@
+<navigation-bar title="我的博客" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <!-- 博客列表 -->
+  <view class="blog-list">
+    <block wx:for="{{blogList}}" wx:key="id">
+      <view class="blog-item" bindtap="goToDetail" data-id="{{item.id}}">
+        <!-- 博客封面 -->
+        <image class="blog-cover" src="{{item.cover || '/images/default-cover.png'}}" mode="aspectFill"></image>
+        <!-- 博客内容 -->
+        <view class="blog-content">
+          <view class="blog-title">{{item.title}}</view>
+          <view class="blog-desc">{{item.summary}}</view>
+          <view class="blog-meta">
+            <text class="blog-author">{{item.author}}</text>
+            <text class="blog-time">{{item.createTime}}</text>
+            <text class="blog-count">阅读 {{item.readCount}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+  <view class="no-more" wx:if="{{!hasMore && blogList.length > 0}}">
+    <text>没有更多内容了</text>
+  </view>
+  <view class="empty" wx:if="{{blogList.length === 0 && !loading}}">
+    <text>暂无博客内容</text>
+  </view>
+</scroll-view>
